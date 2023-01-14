@@ -6,7 +6,7 @@ class SentencePieceJNI {
 
     static {
         try {
-            if (System.getProperty("sp_jni_platform")!=null && System.getProperty("sp_jni_platform").equals("android"))
+            if (System.getProperty("sp_jni_platform")!=null && System.getProperty("sp_jni_platform").toLowerCase().contains("android"))
                 System.loadLibrary("sentencepiece_jni");
             else
                 System.load(NativeLibLoader.createTempFileFromResource("/" + System.mapLibraryName("sentencepiece_jni")));
