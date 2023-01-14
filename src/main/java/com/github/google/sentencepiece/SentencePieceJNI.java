@@ -6,7 +6,10 @@ class SentencePieceJNI {
 
     static {
         try {
-            System.load(NativeLibLoader.createTempFileFromResource("/" + System.mapLibraryName("sentencepiece_jni")));
+            if (System.getProperty("sp_jni_platform")!=null && System.getProperty("sp_jni_platform").equals("android"))
+                System.loadLibrary("sentencepiece_jni");
+            else
+                System.load(NativeLibLoader.createTempFileFromResource("/" + System.mapLibraryName("sentencepiece_jni")));
         } catch (IOException e) {
             throw new UnsatisfiedLinkError(e.getMessage());
         }

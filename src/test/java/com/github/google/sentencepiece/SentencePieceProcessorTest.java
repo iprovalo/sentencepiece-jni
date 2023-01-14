@@ -1,9 +1,6 @@
 package com.github.google.sentencepiece;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,6 +46,12 @@ public class SentencePieceProcessorTest {
             String piece = sp.idToPiece(i);
             Assert.assertEquals(i, sp.pieceToId(piece));
         }
+    }
+
+    @Ignore
+    @Test
+    public void testJvmNotToCrash() {
+        Assert.assertEquals(null, sp.idToPiece(38067));
     }
 
     @Test
